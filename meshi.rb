@@ -1,6 +1,6 @@
+#encodiing: Windows-31J
 require 'csv'
 require 'twitter'
-require 'kconv'
 require 'date'
 #なんかアカウント情報取得とかあれこれ
 client = Twitter::REST::Client.new do |config|
