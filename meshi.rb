@@ -1,6 +1,6 @@
 #encodiing: Windows-31J
 require 'twitter'
-require 'date'
+# require 'date'
 #なんかアカウント情報取得とかあれこれ
 client = Twitter::REST::Client.new do |config|
   config.consumer_key        = ENV['kossi_CONSUMER_KEY']
@@ -15,8 +15,8 @@ stream_client = Twitter::Streaming::Client.new do |config|
   config.access_token_secret = ENV['kossi_ACCESS_TOKEN_SECRET']
 end
 #現在時刻の取得
-nowTime = DateTime.now
-time="#{nowTime.hour}時#{nowTime.minute}分#{nowTime.second}秒"
+# nowTime = DateTime.now
+# time="#{nowTime.hour}時#{nowTime.minute}分#{nowTime.second}秒"
 #フォーマット
 #"飯屋"=>["地域","ジャンル","定休日"]
 hash=Hash.new(["設定中です","設定中です","設定中です"])
