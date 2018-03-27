@@ -1,4 +1,3 @@
-#encodiing: Windows-31J
 require 'csv'
 require 'twitter'
 require 'kconv'
