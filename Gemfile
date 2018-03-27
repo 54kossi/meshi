@@ -4,4 +4,3 @@ source "https://rubygems.org"
 
 gem 'twitter'
 gem 'date'
-gem 'csv'
