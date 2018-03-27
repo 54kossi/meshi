@@ -1,5 +1,4 @@
 #encodiing: Windows-31J
-require 'csv'
 require 'twitter'
 require 'date'
 #なんかアカウント情報取得とかあれこれ
