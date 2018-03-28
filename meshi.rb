@@ -60,26 +60,26 @@ stream_client.user do |tweet|
     puts("-----")
     if kensaku.any? {|m|tweet.text.include?(m)} && !tweet.in_reply_to_status_id && !tweet.retweeted_status ==true
       meshi="#{meshiya.sample}"
-      client.update("@#{tweet.user.screen_name}\n【飯ガチャ結果】\nおすすめは #{meshi} です！\n地域：#{hash[meshi][0]}\nジャンル：#{hash[meshi][1]}\n定休日：#{hash[meshi][2]}\n（「チェンジ」でもう１回できます）\n#飯ガチャ",options = {:in_reply_to_status_id => tweet.id})
+      client.update("@#{tweet.user.screen_name}\n【飯ガチャ結果】\nおすすめは #{meshi} です！\n地域：#{hash[meshi][0]}\nジャンル：#{hash[meshi][1]}\n定休日：#{hash[meshi][2]}\n（「チェンジ」でもう１回抽選できます）\n#飯ガチャ",options = {:in_reply_to_status_id => tweet.id})
     end
     if change.any?{|m|tweet.text.include?(m)} && tweet.text.include?("@kossi_klis") && tweet.in_reply_to_status_id? ==true
       if tweet.in_reply_to_user_id==850681445353791488
         if tweet.user.id != 850681445353791488
           meshi="#{meshiya.sample}"
-          client.update("@#{tweet.user.screen_name}\n【飯ガチャ結果】\nおすすめは #{meshi} です！\n地域：#{hash[meshi][0]}\nジャンル：#{hash[meshi][1]}\n定休日：#{hash[meshi][2]}\n（「チェンジ」でもう１回できます）\n#飯ガチャ",options = {:in_reply_to_status_id => tweet.id})
+          client.update("@#{tweet.user.screen_name}\n【飯ガチャ結果】\nおすすめは #{meshi} です！\n地域：#{hash[meshi][0]}\nジャンル：#{hash[meshi][1]}\n定休日：#{hash[meshi][2]}\n（「チェンジ」でもう１回抽選できます）\n#飯ガチャ",options = {:in_reply_to_status_id => tweet.id})
         end
       end
     end
     #ラーメンガチャ
     if ramengacha.any?{|m|tweet.text.include?(m)} && !tweet.in_reply_to_status_id && !tweet.retweeted_status ==true
       ramen="#{ramenya.sample}"
-      client.update("@#{tweet.user.screen_name}\n【ラーメンガチャ結果】\nおすすめのラーメン屋は #{ramen} だ！\n地域：#{hash[ramen][0]}\nジャンル：#{hash[ramen][1]}\n定休日：#{hash[ramen][2]}\n（「おかわり」「かえだま」でもう１回できます）\n#ラーメンガチャ",options = {:in_reply_to_status_id => tweet.id})
+      client.update("@#{tweet.user.screen_name}\n【ラーメンガチャ結果】\nおすすめのラーメン屋は #{ramen} だ！\n地域：#{hash[ramen][0]}\nジャンル：#{hash[ramen][1]}\n定休日：#{hash[ramen][2]}\n（「おかわり」「かえだま」でもう１回抽選しきます）\n#ラーメンガチャ",options = {:in_reply_to_status_id => tweet.id})
     end
     if kaedama.any?{|m|tweet.text.include?(m)} && tweet.text.include?("@kossi_klis") && tweet.in_reply_to_status_id? ==true
       if tweet.in_reply_to_user_id==850681445353791488
         if tweet.user.id != 850681445353791488
           ramen="#{ramenya.sample}"
-          client.update("@#{tweet.user.screen_name}\n【ラーメンガチャ結果】\nおすすめのラーメン屋は #{ramen} だ！\n地域：#{hash[ramen][0]}\nジャンル：#{hash[ramen][1]}\n定休日：#{hash[ramen][2]}\n（「おかわり」「かえだま」でもう１回できます）\n#ラーメンガチャ",options = {:in_reply_to_status_id => tweet.id})
+          client.update("@#{tweet.user.screen_name}\n【ラーメンガチャ結果】\nおすすめのラーメン屋は #{ramen} だ！\n地域：#{hash[ramen][0]}\nジャンル：#{hash[ramen][1]}\n定休日：#{hash[ramen][2]}\n（「おかわり」「かえだま」でもう１回抽選します）\n#ラーメンガチャ",options = {:in_reply_to_status_id => tweet.id})
         end
       end
     end
