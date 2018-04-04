@@ -111,7 +111,7 @@ stream_client.user do |tweet|
 
     if otaku.any? {|m|tweet.text.include?(m)} && !tweet.in_reply_to_status_id && !tweet.retweeted_status ==true
       motaku="#{otakugatya.sample}"
-      client.update("@#{tweet.user.screen_name}\n【オタクガチャ結果】\nオタクは #{motaku} です！\n#オタクガチャ",options = {:in_reply_to_status_id => tweet.id})
+      client.update("@#{tweet.user.screen_name}\n【オタクガチャ結果】\nオタクは #{motaku} です！\n@die_con_p\n#オタクガチャ",options = {:in_reply_to_status_id => tweet.id})
     end
 
 
