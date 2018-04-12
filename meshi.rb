@@ -53,7 +53,7 @@ meshiya=["ZEYO.","天地","龍郎","俺の生きる道","豚八","ごう家","�
 "学生食堂 おかんの飯","李飯店","麺屋 とどろき","がむしゃ"."ドルフ"].uniq
 unagiya=["松のや","松のや","松乃家"]
 
-otakugatya=["だいこん"]
+# otakugatya=["だいこん"]
 
 kensaku=["飯がちゃ","めしがちゃ","メシガチャ","飯ガチャ","めしガチャ","メシがちゃ"]
 change=["チェンジ","ちぇんじ"]
@@ -116,10 +116,10 @@ stream_client.user do |tweet|
       end
     end
     #オタクガチャ
-    if otaku.any? {|m|tweet.text.include?(m)} && !tweet.in_reply_to_status_id && !tweet.retweeted_status ==true
-      motaku="#{otakugatya.sample}"
-      client.update("@#{tweet.user.screen_name}\n【オタクガチャ結果】\n#{motaku}はオタクです！\n@die_con_p\n#オタクガチャ",options = {:in_reply_to_status_id => tweet.id})
-    end
+    # if otaku.any? {|m|tweet.text.include?(m)} && !tweet.in_reply_to_status_id && !tweet.retweeted_status ==true
+    #   motaku="#{otakugatya.sample}"
+    #   client.update("@#{tweet.user.screen_name}\n【オタクガチャ結果】\n#{motaku}はオタクです！\n@die_con_p\n#オタクガチャ",options = {:in_reply_to_status_id => tweet.id})
+    # end
 　　#時間割
     if jikanwari.any?{|m|tweet.text.include?(m)} && !tweet.in_reply_to_status_id && !tweet.retweeted_status ==true
       client.update("@#{tweet.user.screen_name}\n1限：8:40～9:55\n2限：10:10～11:25\n昼休み：11:25～12:15\n3限：12:15～13:30\n4限：13:45～15:00\n5限：15:15～16:30\n6限：16:45～18:00")
