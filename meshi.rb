@@ -62,6 +62,7 @@ kaedama=["おかわり","かえだま",]
 gyudon=["牛丼ガチャ","ビーフボウル","牛丼がちゃ","びーふぼうるがちゃ","ぎゅうどんがちゃ","びーふがちゃ","ビーフガチャ"]
 matsunoya=["気分じゃない","きぶんじゃない","ちゃぶ台返し","ちゃぶだいがえし"]
 otaku=["オタクガチャ","おたくがちゃ"]
+jikanwari=["時間割","じかんわり"]
 
 stream_client.user do |tweet|
   if tweet.is_a?(Twitter::Tweet)
@@ -69,10 +70,12 @@ stream_client.user do |tweet|
     puts("@#{tweet.user.screen_name}")
     puts(tweet.text)
     puts("-----")
+    #めしがちゃ
     if kensaku.any? {|m|tweet.text.include?(m)} && !tweet.in_reply_to_status_id && !tweet.retweeted_status ==true
       meshi="#{meshiya.sample}"
       client.update("@#{tweet.user.screen_name}\n【飯ガチャ結果】\nおすすめは #{meshi} です！\n地域：#{hash[meshi][0]}\nジャンル：#{hash[meshi][1]}\n定休日：#{hash[meshi][2]}\n（「チェンジ」でもう１回抽選できます）\n#飯ガチャ",options = {:in_reply_to_status_id => tweet.id})
     end
+    #飯ガチャチェンジ
     if change.any?{|m|tweet.text.include?(m)} && tweet.text.include?("@kossi_klis") && tweet.in_reply_to_status_id? ==true
       if tweet.in_reply_to_user_id==850681445353791488
         if tweet.user.id != 850681445353791488
@@ -81,12 +84,13 @@ stream_client.user do |tweet|
         end
       end
     end
+
     #ラーメンガチャ
     if ramengacha.any?{|m|tweet.text.include?(m)} && !tweet.in_reply_to_status_id && !tweet.retweeted_status ==true
       ramen="#{ramenya.sample}"
       client.update("@#{tweet.user.screen_name}\n【ラーメンガチャ結果】\nおすすめのラーメン屋は #{ramen} だ！\n地域：#{hash[ramen][0]}\nジャンル：#{hash[ramen][1]}\n定休日：#{hash[ramen][2]}\n（「おかわり」「かえだま」でもう１回抽選します）\n#ラーメンガチャ",options = {:in_reply_to_status_id => tweet.id})
     end
-
+    #ラーメンガチャチェンジ
     if kaedama.any?{|m|tweet.text.include?(m)} && tweet.text.include?("@kossi_klis") && tweet.in_reply_to_status_id? ==true
       if tweet.in_reply_to_user_id==850681445353791488
         if tweet.user.id != 850681445353791488
@@ -95,11 +99,12 @@ stream_client.user do |tweet|
         end
       end
     end
-
+    #ビーフボウルガチャ
     if gyudon.any? {|m|tweet.text.include?(m)} && !tweet.in_reply_to_status_id && !tweet.retweeted_status ==true
       gyu="#{gyudonya.sample}"
       client.update("@#{tweet.user.screen_name}\n【ビーフボウルガチャ結果】\nおすすめは #{gyu} です！\n地域：#{hash[gyu][0]}\nジャンル：#{hash[gyu][1]}\n定休日：#{hash[gyu][2]}\n（「気分じゃない」「ちゃぶ台返し」でもう１回抽選できます）\n#ビーフボウルガチャ",options = {:in_reply_to_status_id => tweet.id})
     end
+    #ビーフボウルガチャチェンジ
     if matsunoya.any?{|m|tweet.text.include?(m)} && tweet.text.include?("@kossi_klis") && tweet.in_reply_to_status_id? ==true
       if tweet.in_reply_to_user_id==850681445353791488
         if tweet.user.id != 850681445353791488
@@ -108,12 +113,14 @@ stream_client.user do |tweet|
         end
       end
     end
-
+    #オタクガチャ
     if otaku.any? {|m|tweet.text.include?(m)} && !tweet.in_reply_to_status_id && !tweet.retweeted_status ==true
       motaku="#{otakugatya.sample}"
       client.update("@#{tweet.user.screen_name}\n【オタクガチャ結果】\n#{motaku}はオタクです！\n@die_con_p\n#オタクガチャ",options = {:in_reply_to_status_id => tweet.id})
     end
-
-
+　　#時間割
+    if jikanwari.any?{|m|tweet.text.include?(m)}  && !tweet.in_reply_to_status_id && !tweet.retweeted_status ==true
+      client.update("1限：8:40～9:55\n2限：10:10～11:25\n昼休み：11:25～12:15\n3限：12:15～13:30\n4限：13:45～15:00\n5限：15:15～16:30\n6限：16:45～18:00")
+    end
   end
 end
