@@ -111,7 +111,7 @@ meshiya=list.keys.uniq
 unagiya=["松のや","松のや","松乃家"]
 
 otakugatya=["だいこん"]
-otakuid=["@die_con_p","die_con_"]
+otakuid=["@die_con_p","@die_con_"]
 
 kensaku=["飯がちゃ","めしがちゃ","メシガチャ","飯ガチャ","めしガチャ","メシがちゃ"]
 change=["チェンジ","ちぇんじ"]
