@@ -193,7 +193,7 @@ stream_client.user do |tweet|
     if kositan.any?{|m|tweet.text.include?(m)} && !tweet.in_reply_to_status_id && !tweet.retweeted_status ==true
       client.update("@#{tweet.user.screen_name}\n#{kositangoi.sample}",options = {:in_reply_to_status_id => tweet.id})
     end
-    if jikan.any?{|m|tweet.text.include?(m)} && tweet.in_reply_to_status_id? && tweet.include?("@kossi_klis")
+    if jikan.any?{|m|tweet.text.include?(m)} && tweet.in_reply_to_status_id? && tweet.include?("@kossi_klis") == true
       client.update("@#{tweet.user.screen_name}\n1限：8:40～9:55\n2限：10:10～11:25\n昼休み：11:25～12:15\n3限：12:15～13:30\n4限：13:45～15:00\n5限：15:15～16:30\n6限：16:45～18:00",options = {:in_reply_to_status_id => tweet.id})
     end
   end
