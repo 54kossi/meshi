@@ -121,9 +121,15 @@ gyudon=["牛丼ガチャ","ビーフボウル","牛丼がちゃ","びーふぼ�
 matsunoya=["気分じゃない","きぶんじゃない","ちゃぶ台返し","ちゃぶだいがえし"]
 otaku=["オタクガチャ","おたくがちゃ"]
 jikanwari=["こっしーじかんわり","こっしー時間割","jknwr","zknwr"]
+jikan=["こっしーじかんわり","こっしー時間割","jknwr","zknwr","じかんわり","時間割"]
+kositan=["こしたん","こしたそ"]
+kositangoi=["こしたんじゃないよう...","や、ぼきはこしたんではないでつね","こしたんではないけど..."]
 
 #起動文言
 # client.update("飯ガチャを更新しました！現在結果として出るのは#{meshiya.size}店です！")
+#返信用テンプレ
+#client.update("@#{tweet.user.screen_name}\n",options = {:in_reply_to_status_id => tweet.id})
+
 stream_client.user do |tweet|
   if tweet.is_a?(Twitter::Tweet)
     puts(tweet.user.name)
@@ -179,7 +185,15 @@ stream_client.user do |tweet|
       motakuid="#{otakuid.sample}"
       client.update("@#{tweet.user.screen_name}\n【オタクガチャ結果】\n#{motaku}はオタクです！\n#{motakuid}\n#オタクガチャ",options = {:in_reply_to_status_id => tweet.id})
     end
-    if jikanwari.any?{|m|tweet.text.include?(m)} && !tweet.in_reply_to_status_id && !tweet.retweeted_status ==true
+    if jikanwari.any?{|m|tweet.text.include?(m)} && !tweet.retweeted_status ==true
+      client.update("@#{tweet.user.screen_name}\n1限：8:40～9:55\n2限：10:10～11:25\n昼休み：11:25～12:15\n3限：12:15～13:30\n4限：13:45～15:00\n5限：15:15～16:30\n6限：16:45～18:00",options = {:in_reply_to_status_id => tweet.id})
+    end
+
+    #kositan
+    if kositan.any?{|m|tweet.text.include?(m)} && !tweet.in_reply_to_status_id && !tweet.retweeted_status ==true
+      client.update("@#{tweet.user.screen_name}\n#{kositangoi.sample}",options = {:in_reply_to_status_id => tweet.id})
+    end
+    if jikan.any?{|m|tweet.text.include?(m)} && tweet.in_reply_to_status_id? && tweet.include?("@kossi_klis")
       client.update("@#{tweet.user.screen_name}\n1限：8:40～9:55\n2限：10:10～11:25\n昼休み：11:25～12:15\n3限：12:15～13:30\n4限：13:45～15:00\n5限：15:15～16:30\n6限：16:45～18:00",options = {:in_reply_to_status_id => tweet.id})
     end
   end
