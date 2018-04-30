@@ -152,7 +152,7 @@ stream_client.user do |tweet|
       client.update("@#{tweet.user.screen_name}\n【ラーメンガチャ結果】\nおすすめのラーメン屋は #{ramen} だ！\n地域：#{hash[ramen][0]}\nジャンル：#{hash[ramen][1]}\n定休日：#{hash[ramen][2]}\n（「おかわり」「かえだま」でもう１回抽選します）\n#ラーメンガチャ",options = {:in_reply_to_status_id => tweet.id})
     end
 
-    end
+    # end
     #飯ガチャチェンジ
     if change.any?{|m|tweet.text.include?(m)} && tweet.text.include?("@kossi_klis") && tweet.in_reply_to_status_id? ==true
       if tweet.in_reply_to_user_id==850681445353791488
