@@ -115,6 +115,7 @@ otakuid=["@die_con_p","@die_con_"]
 
 kensaku=["飯がちゃ","めしがちゃ","メシガチャ","飯ガチャ","めしガチャ","メシがちゃ"]
 change=["チェンジ","ちぇんじ"]
+mramen=["ラーメン","らーめん"]
 ramengacha=["ラーメンガチャ","ラーメンがちゃ","らーめんがちゃ","らーめんガチャ"]
 kaedama=["おかわり","かえだま",]
 gyudon=["牛丼ガチャ","ビーフボウル","牛丼がちゃ","びーふぼうるがちゃ","ぎゅうどんがちゃ","びーふがちゃ","ビーフガチャ"]
@@ -138,8 +139,13 @@ stream_client.user do |tweet|
     puts("-----")
     #めしがちゃ
     if kensaku.any? {|m|tweet.text.include?(m)} && !tweet.in_reply_to_status_id && !tweet.retweeted_status ==true
-      meshi="#{meshiya.sample}"
-      client.update("@#{tweet.user.screen_name}\n【飯ガチャ結果】\nおすすめは #{meshi} です！\n地域：#{hash[meshi][0]}\nジャンル：#{hash[meshi][1]}\n定休日：#{hash[meshi][2]}\n（「チェンジ」でもう１回抽選できます）\n#飯ガチャ",options = {:in_reply_to_status_id => tweet.id})
+      if mramen.any? {|m|tweet.text.include?(m)} && !tweet.in_reply_to_status_id && !tweet.retweeted_status ==true
+        ramen="#{ramenya.sample}"
+        client.update("@#{tweet.user.screen_name}\n【ラーメンガチャ結果】\nおすすめのラーメン屋は #{ramen} だ！\n地域：#{hash[ramen][0]}\nジャンル：#{hash[ramen][1]}\n定休日：#{hash[ramen][2]}\n（「おかわり」「かえだま」でもう１回抽選します）\n#ラーメンガチャ",options = {:in_reply_to_status_id => tweet.id})
+      else
+        meshi="#{meshiya.sample}"
+        client.update("@#{tweet.user.screen_name}\n【飯ガチャ結果】\nおすすめは #{meshi} です！\n地域：#{hash[meshi][0]}\nジャンル：#{hash[meshi][1]}\n定休日：#{hash[meshi][2]}\n（「チェンジ」でもう１回抽選できます）\n#飯ガチャ",options = {:in_reply_to_status_id => tweet.id})
+      end
     end
     #飯ガチャチェンジ
     if change.any?{|m|tweet.text.include?(m)} && tweet.text.include?("@kossi_klis") && tweet.in_reply_to_status_id? ==true
