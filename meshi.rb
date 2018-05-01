@@ -122,11 +122,11 @@ gyudon=["牛丼ガチャ","ビーフボウル","牛丼がちゃ","びーふぼ�
 matsunoya=["気分じゃない","きぶんじゃない","ちゃぶ台返し","ちゃぶだいがえし"]
 otaku=["オタクガチャ","おたくがちゃ"]
 jikanwari=["こっしーじかんわり","こっしー時間割","jknwr","zknwr"]
-jikanwari2=["こっしーじかんわり","こっしー時間割","jknwr","zknwr","じかんわり","時間割"]
+jikanwari2=["こっしーじかんわり","こっしー時間割","jknwr","zknwr","じかんわり","時間割","じかん","時間"]
 kositan=["こしたん","こしたそ"]
 kosimeshi=["飯","めし","メシ"]
 kosiramen=["ラーメン","らーめん"]
-kositangoi=["こしたんじゃないよう...","や、ぼきはこしたんではないでつね","こしたんではないけど..."]
+kositangoi=["こしたんじゃないよう...","や、ぼきはこしたんではないでつね","こしたんではないけど...","こしたんではないんだけども(´・ω・`)"]
 
 #起動文言
 # client.update("飯ガチャを更新しました！現在結果として出るのは#{meshiya.size}店です！")
@@ -152,21 +152,21 @@ stream_client.user do |tweet|
     elsif ramengacha.any?{|m|tweet.text.include?(m)} && !tweet.in_reply_to_status_id && !tweet.retweeted_status ==true
       ramen="#{ramenya.sample}"
       client.update("@#{tweet.user.screen_name}\n【ラーメンガチャ結果】\nおすすめのラーメン屋は #{ramen} だ！\n地域：#{hash[ramen][0]}\nジャンル：#{hash[ramen][1]}\n定休日：#{hash[ramen][2]}\n（「おかわり」「かえだま」でもう１回抽選します）\n#ラーメンガチャ",options = {:in_reply_to_status_id => tweet.id})
+      #こしたん
     elsif kositan.any?{|m|tweet.text.include?(m)} && !tweet.in_reply_to_status_id && !tweet.retweeted_status ==true
-        if jikanwari2.any?{|m|tweet.text.include?(m)} &&!tweet.in_reply_to_status_id && !tweet.retweeted_status ==true
-          client.update("@#{tweet.user.screen_name}\n1限：8:40～9:55\n2限：10:10～11:25\n昼休み：11:25～12:15\n3限：12:15～13:30\n4限：13:45～15:00\n5限：15:15～16:30\n6限：16:45～18:00",options = {:in_reply_to_status_id => tweet.id})
-        elsif kosimeshi.any? {|m|tweet.text.include?(m)} && !tweet.in_reply_to_status_id && !tweet.retweeted_status ==true
-          meshi="#{meshiya.sample}"
-          client.update("@#{tweet.user.screen_name}\n【飯ガチャ結果】\nおすすめは #{meshi} です！\n地域：#{hash[meshi][0]}\nジャンル：#{hash[meshi][1]}\n定休日：#{hash[meshi][2]}\n（「チェンジ」でもう１回抽選できます）\n#飯ガチャ",options = {:in_reply_to_status_id => tweet.id})
-        elsif kosiramen.any? {|m|tweet.text.include?(m)} && !tweet.in_reply_to_status_id && !tweet.retweeted_status ==true
-          ramen="#{ramenya.sample}"
-          client.update("@#{tweet.user.screen_name}\n【ラーメンガチャ結果】\nおすすめのラーメン屋は #{ramen} だ！\n地域：#{hash[ramen][0]}\nジャンル：#{hash[ramen][1]}\n定休日：#{hash[ramen][2]}\n（「おかわり」「かえだま」でもう１回抽選します）\n#ラーメンガチャ",options = {:in_reply_to_status_id => tweet.id})
-        else
-          client.update("@#{tweet.user.screen_name}\n#{kositangoi.sample}",options = {:in_reply_to_status_id => tweet.id})
-        end
+      if jikanwari2.any?{|m|tweet.text.include?(m)} &&!tweet.in_reply_to_status_id && !tweet.retweeted_status ==true
+        client.update("@#{tweet.user.screen_name}\n1限：8:40～9:55\n2限：10:10～11:25\n昼休み：11:25～12:15\n3限：12:15～13:30\n4限：13:45～15:00\n5限：15:15～16:30\n6限：16:45～18:00",options = {:in_reply_to_status_id => tweet.id})
+      elsif kosimeshi.any? {|m|tweet.text.include?(m)} && !tweet.in_reply_to_status_id && !tweet.retweeted_status ==true
+        meshi="#{meshiya.sample}"
+        client.update("@#{tweet.user.screen_name}\n【飯ガチャ結果】\nおすすめは #{meshi} です！\n地域：#{hash[meshi][0]}\nジャンル：#{hash[meshi][1]}\n定休日：#{hash[meshi][2]}\n（「チェンジ」でもう１回抽選できます）\n#飯ガチャ",options = {:in_reply_to_status_id => tweet.id})
+      elsif kosiramen.any? {|m|tweet.text.include?(m)} && !tweet.in_reply_to_status_id && !tweet.retweeted_status ==true
+        ramen="#{ramenya.sample}"
+        client.update("@#{tweet.user.screen_name}\n【ラーメンガチャ結果】\nおすすめのラーメン屋は #{ramen} だ！\n地域：#{hash[ramen][0]}\nジャンル：#{hash[ramen][1]}\n定休日：#{hash[ramen][2]}\n（「おかわり」「かえだま」でもう１回抽選します）\n#ラーメンガチャ",options = {:in_reply_to_status_id => tweet.id})
+      else
+        client.update("@#{tweet.user.screen_name}\n#{kositangoi.sample}",options = {:in_reply_to_status_id => tweet.id})
+      end
     end
 
-    # end
 
     #飯ガチャチェンジ
     if change.any?{|m|tweet.text.include?(m)} && tweet.text.include?("@kossi_klis") && tweet.in_reply_to_status_id? ==true
