@@ -16,6 +16,7 @@ stream_client = Twitter::Streaming::Client.new do |config|
 end
 #現在時刻の取得
 # nowTime = DateTime.now
+# test
 # time="#{nowTime.hour}時#{nowTime.minute}分#{nowTime.second}秒"
 #フォーマット
 #"飯屋"=>["地域","ジャンル","定休日"] =>["","",""]
